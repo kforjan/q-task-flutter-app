@@ -11,32 +11,32 @@ enum Flavor { dev, stage, prod }
 abstract class FlavorConfig {
   Flavor getFlavor();
 
-  String getBaseUrl();
+  String getBaseApiUrl();
 }
 
 @Singleton(as: FlavorConfig, env: [Env.development])
 class DevConfig implements FlavorConfig {
   @override
-  String getBaseUrl() => 'https://jsonplaceholder.typicode.com/';
+  Flavor getFlavor() => Flavor.dev;
 
   @override
-  Flavor getFlavor() => Flavor.dev;
+  String getBaseApiUrl() => 'https://jsonplaceholder.typicode.com/';
 }
 
 @Singleton(as: FlavorConfig, env: [Env.stage])
 class StageConfig implements FlavorConfig {
   @override
-  String getBaseUrl() => 'https://jsonplaceholder.typicode.com/';
+  Flavor getFlavor() => Flavor.stage;
 
   @override
-  Flavor getFlavor() => Flavor.stage;
+  String getBaseApiUrl() => 'https://jsonplaceholder.typicode.com/';
 }
 
 @Singleton(as: FlavorConfig, env: [Env.production])
 class ProdConfig implements FlavorConfig {
   @override
-  String getBaseUrl() => 'https://jsonplaceholder.typicode.com/';
+  Flavor getFlavor() => Flavor.prod;
 
   @override
-  Flavor getFlavor() => Flavor.prod;
+  String getBaseApiUrl() => 'https://jsonplaceholder.typicode.com/';
 }
