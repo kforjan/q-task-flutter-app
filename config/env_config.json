@@ -1,0 +1,4 @@
+{
+    "_comment": "This JSON should be a part of .gitignore and should be added at buildtime.",
+    "env": "dev"
+}
