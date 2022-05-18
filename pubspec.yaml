@@ -17,17 +17,27 @@ dependencies:
   # di
   injectable: ^1.5.3
   get_it: ^7.2.0
-  #l10n
+
+  # network
+  dio: ^4.0.6
+  retrofit: ^3.0.1+1
+
+  # l10n
   flutter_localizations:
     sdk: flutter
   intl: ^0.17.0
 
+  # logging
+  logger: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  injectable_generator: null
-  build_runner: null
+  build_runner: any
   flutter_lints: ^1.0.0
+  json_serializable: '>4.4.0'
+  injectable_generator: any
+  retrofit_generator: any
 
 flutter:
   uses-material-design: true

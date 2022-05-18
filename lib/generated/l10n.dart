@@ -59,6 +59,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Something is wrong with the server, please contact system administrator!`
+  String get server_error {
+    return Intl.message(
+      'Something is wrong with the server, please contact system administrator!',
+      name: 'server_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown error`
+  String get unknown_error {
+    return Intl.message(
+      'Unknown error',
+      name: 'unknown_error',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,4 +1,6 @@
 {
     "@@locale": "en",
-    "appName": "Q app"
+    "appName": "Q app",
+    "server_error": "Something is wrong with the server, please contact system administrator!",
+    "unknown_error": "Unknown error"
 }
