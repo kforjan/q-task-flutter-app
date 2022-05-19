@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:q_task_flutter_app/config/flavor_config.dart';
+import 'package:q_task_flutter_app/data/model/response/comments_response.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'rest_client.g.dart';
@@ -24,4 +25,10 @@ abstract class RestClient {
 
     return RestClient(dio);
   }
+
+  @GET("/mobile/customer/transaction-list")
+  Future<CommentsResponse> getComments({
+    @Query("_start") required int start,
+    @Query("_limit") required int limit,
+  });
 }

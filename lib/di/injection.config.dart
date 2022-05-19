@@ -10,7 +10,8 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import '../config/flavor_config.dart' as _i4;
 import '../data/network/rest_client.dart' as _i5;
-import 'register_module.dart' as _i6;
+import '../data/network/service/comments_service.dart' as _i6;
+import 'register_module.dart' as _i7;
 
 const String _development = 'development';
 const String _stage = 'stage';
@@ -28,7 +29,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.singleton<_i4.FlavorConfig>(_i4.ProdConfig(), registerFor: {_production});
   gh.singleton<_i5.RestClient>(
       _i5.RestClient.create(get<_i3.Dio>(), get<_i4.FlavorConfig>()));
+  gh.singleton<_i6.CommentsService>(_i6.CommentsService(get<_i5.RestClient>()));
   return get;
 }
 
-class _$RegisterModule extends _i6.RegisterModule {}
+class _$RegisterModule extends _i7.RegisterModule {}
