@@ -5,6 +5,6 @@ import 'injection.config.dart';
 final sl = GetIt.instance;
 
 @injectableInit
-void configureDependencies(String environment) {
-  $initGetIt(sl, environment: environment);
+Future<void> configureDependencies(String environment) async {
+  await $initGetIt(sl, environment: environment);
 }

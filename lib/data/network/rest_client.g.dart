@@ -14,7 +14,7 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<CommentsResponse> getComments({required start, required limit}) async {
+  Future<List<Comment>> getComments({required start, required limit}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'_start': start,
@@ -22,13 +22,15 @@ class _RestClient implements RestClient {
     };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<CommentsResponse>(
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<Comment>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/mobile/customer/transaction-list',
+                .compose(_dio.options, 'comments',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = CommentsResponse.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => Comment.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

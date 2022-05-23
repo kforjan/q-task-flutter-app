@@ -7,6 +7,6 @@ import 'app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ConfigReader.initialize();
-  configureDependencies(ConfigReader.getEvnironment());
+  await configureDependencies(ConfigReader.getEvnironment());
   runApp(const QApp());
 }

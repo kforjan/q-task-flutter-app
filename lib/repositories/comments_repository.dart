@@ -17,14 +17,12 @@ class CommentsRepository {
     required int start,
     required int limit,
   }) async {
-    final commentsResponse = await _commentsService.getComments(
+    final comments = await _commentsService.getComments(
       start,
       limit,
     );
-    await _commentsStorage
-        .saveComments(commentsResponse.comments ?? <Comment>[]);
-
-    return commentsResponse.comments ?? <Comment>[];
+    await _commentsStorage.saveComments(comments);
+    return await getPersistCommentsAsync() ?? <Comment>[];
   }
 
   Future<List<Comment>?> getPersistCommentsAsync() async {

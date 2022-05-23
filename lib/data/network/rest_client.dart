@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:q_task_flutter_app/config/flavor_config.dart';
-import 'package:q_task_flutter_app/data/model/response/comments_response.dart';
+import 'package:q_task_flutter_app/data/model/domain/comment.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:dio_logger/dio_logger.dart';
 
 part 'rest_client.g.dart';
 
@@ -23,11 +24,13 @@ abstract class RestClient {
       sendTimeout: 5000,
     );
 
+    dio.interceptors.add(dioLoggerInterceptor);
+
     return RestClient(dio);
   }
 
-  @GET("/mobile/customer/transaction-list")
-  Future<CommentsResponse> getComments({
+  @GET("comments")
+  Future<List<Comment>> getComments({
     @Query("_start") required int start,
     @Query("_limit") required int limit,
   });

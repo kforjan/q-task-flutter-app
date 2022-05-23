@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:q_task_flutter_app/common/constants/constants.dart';
 
 abstract class Env {
   static const development = 'development';
@@ -20,7 +21,7 @@ class DevConfig implements FlavorConfig {
   Flavor getFlavor() => Flavor.dev;
 
   @override
-  String getBaseApiUrl() => 'https://jsonplaceholder.typicode.com/';
+  String getBaseApiUrl() => Strings.devBaseUrl;
 }
 
 @Singleton(as: FlavorConfig, env: [Env.stage])
@@ -29,7 +30,7 @@ class StageConfig implements FlavorConfig {
   Flavor getFlavor() => Flavor.stage;
 
   @override
-  String getBaseApiUrl() => 'https://jsonplaceholder.typicode.com/';
+  String getBaseApiUrl() => Strings.stageBaseUrl;
 }
 
 @Singleton(as: FlavorConfig, env: [Env.production])
@@ -38,5 +39,5 @@ class ProdConfig implements FlavorConfig {
   Flavor getFlavor() => Flavor.prod;
 
   @override
-  String getBaseApiUrl() => 'https://jsonplaceholder.typicode.com/';
+  String getBaseApiUrl() => Strings.prodBaseUrl;
 }

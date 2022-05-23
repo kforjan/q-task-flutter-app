@@ -1,7 +1,7 @@
 // ignore_for_file: unused_field
 
 import 'package:injectable/injectable.dart';
-import 'package:q_task_flutter_app/data/model/response/comments_response.dart';
+import 'package:q_task_flutter_app/data/model/domain/comment.dart';
 import 'package:q_task_flutter_app/util/error_handler.dart';
 
 import '../../../common/base/base_service.dart';
@@ -14,12 +14,13 @@ class CommentsService extends BaseService {
 
   CommentsService(this._restClient);
 
-  Future<CommentsResponse> getComments(int start, int limit) async {
+  Future<List<Comment>> getComments(int start, int limit) async {
     return await apiRequest(
       apiCall: _restClient.getComments(
         start: start,
         limit: limit,
       ),
+
       errorResolver: DefaultErrorResolver(), //TODO: error resolver
     );
   }
