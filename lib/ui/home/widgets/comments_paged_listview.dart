@@ -23,12 +23,9 @@ class _CommentsPagedListviewState extends State<CommentsPagedListview> {
   @override
   void initState() {
     _pagingController.addPageRequestListener((pageKey) {
-      print('SAD------------------------!!!!!!');
-      print(_pagingController.nextPageKey);
-      _commentsBloc.add(
-        CommentsFetch(),
-      );
+      _commentsBloc.add(CommentsFetch());
     });
+
     super.initState();
   }
 
@@ -46,23 +43,21 @@ class _CommentsPagedListviewState extends State<CommentsPagedListview> {
         return previous is CommentsLoading || current is CommentsLoading;
       },
       listener: (context, state) {
-        if (state is CommentsLoading) {
-        } else {
-          if (state is CommentsLoaded) {
-            final isLastPage = state.newComments.isEmpty;
-            if (isLastPage) {
-              _pagingController.appendLastPage(state.newComments);
-            } else {
-              _pagingController.appendPage(state.newComments, state.pageNumber);
-            }
-          } else if (state is CommentsError) {
-            _pagingController.error = state.error;
+        if (state is CommentsLoaded) {
+          final isLastPage = state.newComments.isEmpty;
+          if (isLastPage) {
+            _pagingController.appendLastPage(state.newComments);
+          } else {
+            _pagingController.appendPage(state.newComments, state.pageNumber);
           }
+        } else if (state is CommentsError) {
+          _pagingController.error = state.error;
         }
       },
       child: RefreshIndicator(
         onRefresh: () => Future.sync(
           () {
+            _commentsBloc.add(CommentsRefresh());
             _pagingController.refresh();
           },
         ),

@@ -11,3 +11,8 @@ class CommentsFetch extends CommentsEvent {
   @override
   List<Object> get props => [];
 }
+
+class CommentsRefresh extends CommentsEvent {
+  @override
+  List<Object> get props => [];
+}
