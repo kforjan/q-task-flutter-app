@@ -14,15 +14,15 @@ class CommentsRepository {
   final CommentStorage _commentsStorage;
 
   Future<List<Comment>> getComments({
-    required int start,
+    required int page,
     required int limit,
   }) async {
     final comments = await _commentsService.getComments(
-      start,
+      page,
       limit,
     );
     await _commentsStorage.saveComments(comments);
-    return await getPersistCommentsAsync() ?? <Comment>[];
+    return comments;
   }
 
   Future<List<Comment>?> getPersistCommentsAsync() async {

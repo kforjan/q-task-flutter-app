@@ -14,12 +14,9 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<List<Comment>> getComments({required start, required limit}) async {
+  Future<List<Comment>> getComments({required page, required limit}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'_start': start,
-      r'_limit': limit
-    };
+    final queryParameters = <String, dynamic>{r'_page': page, r'_limit': limit};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(

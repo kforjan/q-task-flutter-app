@@ -10,5 +10,5 @@ abstract class RegisterModule {
 
   @preResolve
   @singleton
-  Future<Db> get database => $FloorDb.databaseBuilder(Strings.dbName).build();
+  Future<Db> get database => $FloorDb.databaseBuilder(Constants.dbName).build();
 }

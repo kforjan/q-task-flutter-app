@@ -8,8 +8,6 @@ abstract class CommentsEvent extends Equatable {
 }
 
 class CommentsFetch extends CommentsEvent {
-  const CommentsFetch();
-
   @override
   List<Object> get props => [];
 }

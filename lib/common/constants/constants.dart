@@ -1,5 +1,5 @@
-class Strings {
-  Strings._();
+class Constants {
+  Constants._();
 
   static const title = 'Q App';
 
@@ -12,4 +12,7 @@ class Strings {
   static const devBaseUrl = 'https://jsonplaceholder.typicode.com/';
   static const stageBaseUrl = 'https://jsonplaceholder.typicode.com/';
   static const prodBaseUrl = 'https://jsonplaceholder.typicode.com/';
+
+  //pagination
+  static const pageSize = 15;
 }

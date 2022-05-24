@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
+import 'package:q_task_flutter_app/common/constants/constants.dart';
 import 'package:q_task_flutter_app/data/model/domain/comment.dart';
 import 'package:q_task_flutter_app/repositories/comments_repository.dart';
 import 'dart:async';
@@ -18,22 +19,35 @@ class CommentsBloc extends Bloc<CommentsEvent, CommentsState> {
 
   FutureOr<void> _onCommentsFetch(
       CommentsFetch event, Emitter<CommentsState> emit) async {
-    emit(CommentsLoading());
+    final state = this.state;
     try {
-      final state = this.state;
-      final List<Comment> comments;
+      List<Comment> allComments;
+      List<Comment> newComments;
+      int pageNumber;
+
       if (state is CommentsLoaded) {
-        comments = await _commentsRepository.getComments(
-          start: state.comments.length,
-          limit: 10,
+        pageNumber = state.pageNumber + 1;
+        allComments = state.allComments;
+        emit(CommentsLoading());
+        newComments = await _commentsRepository.getComments(
+          page: pageNumber,
+          limit: Constants.pageSize,
         );
+        allComments.addAll(newComments);
       } else {
-        comments = await _commentsRepository.getComments(
-          start: 1,
-          limit: 10,
+        pageNumber = 1;
+        emit(CommentsLoading());
+        allComments = await _commentsRepository.getComments(
+          page: 1,
+          limit: Constants.pageSize,
         );
+        newComments = allComments;
       }
-      emit(CommentsLoaded(comments: comments));
+      emit(CommentsLoaded(
+        allComments: allComments,
+        newComments: newComments,
+        pageNumber: pageNumber,
+      ));
     } catch (error) {
       if (error is Exception) {
         emit(CommentsError(error: error));

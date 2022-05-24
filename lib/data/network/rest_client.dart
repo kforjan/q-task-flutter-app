@@ -31,7 +31,7 @@ abstract class RestClient {
 
   @GET("comments")
   Future<List<Comment>> getComments({
-    @Query("_start") required int start,
+    @Query("_page") required int page,
     @Query("_limit") required int limit,
   });
 }

@@ -15,11 +15,16 @@ class CommentsLoading extends CommentsState {
 }
 
 class CommentsLoaded extends CommentsState {
-  const CommentsLoaded({required this.comments});
-  final List<Comment> comments;
+  const CommentsLoaded(
+      {required this.allComments,
+      required this.newComments,
+      required this.pageNumber});
+  final List<Comment> allComments;
+  final List<Comment> newComments;
+  final int pageNumber;
 
   @override
-  List<Object> get props => [comments];
+  List<Object> get props => [allComments, newComments];
 }
 
 class CommentsError extends CommentsState {

@@ -21,7 +21,7 @@ class DevConfig implements FlavorConfig {
   Flavor getFlavor() => Flavor.dev;
 
   @override
-  String getBaseApiUrl() => Strings.devBaseUrl;
+  String getBaseApiUrl() => Constants.devBaseUrl;
 }
 
 @Singleton(as: FlavorConfig, env: [Env.stage])
@@ -30,7 +30,7 @@ class StageConfig implements FlavorConfig {
   Flavor getFlavor() => Flavor.stage;
 
   @override
-  String getBaseApiUrl() => Strings.stageBaseUrl;
+  String getBaseApiUrl() => Constants.stageBaseUrl;
 }
 
 @Singleton(as: FlavorConfig, env: [Env.production])
@@ -39,5 +39,5 @@ class ProdConfig implements FlavorConfig {
   Flavor getFlavor() => Flavor.prod;
 
   @override
-  String getBaseApiUrl() => Strings.prodBaseUrl;
+  String getBaseApiUrl() => Constants.prodBaseUrl;
 }
