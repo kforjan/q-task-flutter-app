@@ -26,6 +26,7 @@ dependencies:
 
   # local storage
   floor: ^1.2.0
+  sqflite: ^2.0.2+1
 
   # state management
   bloc: ^8.0.3
@@ -37,8 +38,6 @@ dependencies:
     sdk: flutter
   intl: ^0.17.0
 
-  # logging
-  logger: any
   infinite_scroll_pagination: ^3.1.0
 
 dev_dependencies:
@@ -52,7 +51,8 @@ dev_dependencies:
   floor_generator: ^1.2.0
   freezed: ^1.1.0
   dio_logger: ^4.0.8+8
-  dio_logging_interceptor: ^1.0.1
+  logger: any
+
 
 
 

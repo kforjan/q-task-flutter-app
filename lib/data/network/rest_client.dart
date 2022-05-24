@@ -29,9 +29,9 @@ abstract class RestClient {
     return RestClient(dio);
   }
 
-  @GET("comments")
+  @GET('comments')
   Future<List<Comment>> getComments({
-    @Query("_page") required int page,
-    @Query("_limit") required int limit,
+    @Query('_page') required int page,
+    @Query('_limit') required int limit,
   });
 }

@@ -49,7 +49,7 @@ class DefaultErrorResolver implements ErrorResolver {
   @override
   Exception resolve<T>(response) {
     final int? statusCode = response.statusCode;
-    final String statusMessage = response.statusMessage ?? "";
+    final String statusMessage = response.statusMessage ?? '';
     if (statusCode != null) {
       if (statusCode >= 500 && statusCode <= 599) {
         return ServerError(statusMessage);
@@ -63,44 +63,44 @@ class DefaultErrorResolver implements ErrorResolver {
 class ServerError implements Exception {
   final String message;
 
-  const ServerError([this.message = ""]);
+  const ServerError([this.message = '']);
 
   @override
-  String toString() => "ServerError: $message";
+  String toString() => 'ServerError: $message';
 }
 
 class CancelError implements Exception {
   final String message;
 
-  const CancelError([this.message = ""]);
+  const CancelError([this.message = '']);
 
   @override
-  String toString() => "CancelError: $message";
+  String toString() => 'CancelError: $message';
 }
 
 class ConnectTimeoutError implements Exception {
   final String message;
 
-  const ConnectTimeoutError([this.message = ""]);
+  const ConnectTimeoutError([this.message = '']);
 
   @override
-  String toString() => "ConnectTimeoutError: $message";
+  String toString() => 'ConnectTimeoutError: $message';
 }
 
 class SendTimeoutError implements Exception {
   final String message;
 
-  const SendTimeoutError([this.message = ""]);
+  const SendTimeoutError([this.message = '']);
 
   @override
-  String toString() => "SendTimeoutError: $message";
+  String toString() => 'SendTimeoutError: $message';
 }
 
 class ReceiveTimeoutError implements Exception {
   final String message;
 
-  const ReceiveTimeoutError([this.message = ""]);
+  const ReceiveTimeoutError([this.message = '']);
 
   @override
-  String toString() => "ReceiveTimeoutError: $message";
+  String toString() => 'ReceiveTimeoutError: $message';
 }

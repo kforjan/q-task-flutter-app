@@ -190,13 +190,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.8+8"
-  dio_logging_interceptor:
-    dependency: "direct dev"
-    description:
-      name: dio_logging_interceptor
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
   equatable:
     dependency: "direct main"
     description:
@@ -409,7 +402,7 @@ packages:
     source: hosted
     version: "1.0.1"
   logger:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       name: logger
       url: "https://pub.dartlang.org"
@@ -568,7 +561,7 @@ packages:
     source: hosted
     version: "1.8.2"
   sqflite:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: sqflite
       url: "https://pub.dartlang.org"
