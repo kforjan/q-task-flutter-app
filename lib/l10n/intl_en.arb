@@ -1,6 +1,7 @@
 {
     "@@locale": "en",
-    "appName": "Q app",
+    "app_name": "Q app",
+    "no_comments_yet": "There are no comments yet. Please try again later!",
     "server_error": "Something is wrong with the server, please contact system administrator!",
     "unknown_error": "Unknown error"
 }

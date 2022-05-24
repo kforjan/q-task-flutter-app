@@ -22,7 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appName": MessageLookupByLibrary.simpleMessage("Q app"),
+        "app_name": MessageLookupByLibrary.simpleMessage("Q app"),
+        "no_comments_yet": MessageLookupByLibrary.simpleMessage(
+            "There are no comments yet. Please try again later!"),
         "server_error": MessageLookupByLibrary.simpleMessage(
             "Something is wrong with the server, please contact system administrator!"),
         "unknown_error": MessageLookupByLibrary.simpleMessage("Unknown error")

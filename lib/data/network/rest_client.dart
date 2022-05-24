@@ -4,7 +4,6 @@ import 'package:q_task_flutter_app/config/flavor_config.dart';
 import 'package:q_task_flutter_app/data/model/domain/comment.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio_logger/dio_logger.dart';
-
 part 'rest_client.g.dart';
 
 @singleton

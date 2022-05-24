@@ -51,10 +51,20 @@ class S {
   }
 
   /// `Q app`
-  String get appName {
+  String get app_name {
     return Intl.message(
       'Q app',
-      name: 'appName',
+      name: 'app_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no comments yet. Please try again later!`
+  String get no_comments_yet {
+    return Intl.message(
+      'There are no comments yet. Please try again later!',
+      name: 'no_comments_yet',
       desc: '',
       args: [],
     );

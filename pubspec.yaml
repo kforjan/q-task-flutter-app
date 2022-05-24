@@ -13,7 +13,6 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  freezed_annotation: ^1.1.0
 
   # di
   injectable: ^1.5.3
@@ -38,7 +37,12 @@ dependencies:
     sdk: flutter
   intl: ^0.17.0
 
+  # pagination
   infinite_scroll_pagination: ^3.1.0
+
+  # widgets
+  flutter_platform_widgets: ^1.20.0
+  pull_to_refresh: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +54,7 @@ dev_dependencies:
   retrofit_generator: any
   floor_generator: ^1.2.0
   freezed: ^1.1.0
+  freezed_annotation: ^1.1.0
   dio_logger: ^4.0.8+8
   logger: any
 
