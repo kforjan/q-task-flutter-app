@@ -2,6 +2,8 @@
     "@@locale": "en",
     "app_name": "Q app",
     "no_comments_yet": "There are no comments yet. Please try again later!",
+    "try_again": "Try again",
+    "something_went_wrong_try_again": "Something went wrong. Please try again!",
     "server_error": "Something is wrong with the server, please contact system administrator!",
     "unknown_error": "Unknown error"
 }

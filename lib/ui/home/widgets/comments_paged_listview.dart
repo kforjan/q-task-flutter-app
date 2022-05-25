@@ -89,6 +89,20 @@ class _CommentsPagedListviewState extends State<CommentsPagedListview> {
                     PlatformText(S.of(context).no_comments_yet),
                 newPageProgressIndicatorBuilder: (context) =>
                     Center(child: PlatformCircularProgressIndicator()),
+                firstPageErrorIndicatorBuilder: (context) => Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(S.of(context).something_went_wrong_try_again),
+                      const SizedBox(height: 40),
+                      PlatformElevatedButton(
+                        child: PlatformText(S.of(context).try_again),
+                        onPressed: () =>
+                            _pagingController.retryLastFailedRequest(),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               separatorBuilder: (BuildContext context, int index) =>
                   const Divider(height: 1.0),

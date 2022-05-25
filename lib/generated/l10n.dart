@@ -70,6 +70,26 @@ class S {
     );
   }
 
+  /// `Try again`
+  String get try_again {
+    return Intl.message(
+      'Try again',
+      name: 'try_again',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong. Please try again!`
+  String get something_went_wrong_try_again {
+    return Intl.message(
+      'Something went wrong. Please try again!',
+      name: 'something_went_wrong_try_again',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Something is wrong with the server, please contact system administrator!`
   String get server_error {
     return Intl.message(

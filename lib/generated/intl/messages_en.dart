@@ -27,6 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "There are no comments yet. Please try again later!"),
         "server_error": MessageLookupByLibrary.simpleMessage(
             "Something is wrong with the server, please contact system administrator!"),
+        "something_went_wrong_try_again": MessageLookupByLibrary.simpleMessage(
+            "Something went wrong. Please try again!"),
+        "try_again": MessageLookupByLibrary.simpleMessage("Try again"),
         "unknown_error": MessageLookupByLibrary.simpleMessage("Unknown error")
       };
 }
