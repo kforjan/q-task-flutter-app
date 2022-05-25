@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
@@ -48,6 +50,20 @@ class CommentsBloc extends Bloc<CommentsEvent, CommentsState> {
         allComments: allComments,
         newComments: newComments,
         pageNumber: pageNumber,
+      ));
+    } on SocketException catch (error) {
+      final comments =
+          await _commentsRepository.getPersistCommentsAsync() ?? [];
+      if (state is! CommentsLoaded && state is! CommentsError) {
+        emit(CommentsLoaded(
+          allComments: comments,
+          newComments: comments,
+          pageNumber: (comments.length / Constants.pageSize).ceil(),
+        ));
+      }
+      emit(CommentsError(
+        error: error,
+        pageNumber: (comments.length / Constants.pageSize).ceil(),
       ));
     } catch (error) {
       if (error is Exception) {

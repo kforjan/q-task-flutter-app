@@ -64,49 +64,47 @@ class _CommentsPagedListviewState extends State<CommentsPagedListview> {
             _refreshController.refreshFailed();
           }
         },
-        child: Scrollbar(
-          child: SmartRefresher(
-            controller: _refreshController,
-            onRefresh: () {
-              _commentsBloc.add(CommentsRefresh());
-              _pagingController.refresh();
-            },
-            child: PagedListView<int, Comment>.separated(
-              pagingController: _pagingController,
-              builderDelegate: PagedChildBuilderDelegate<Comment>(
-                itemBuilder: ((context, comment, index) {
-                  return InkWell(
-                    onTap: () => _showCommentPlatformDialog(comment),
-                    child: ListTile(
-                      leading: Text(comment.id.toString()),
-                      title: Text('${comment.email}\n${comment.name}'),
-                      subtitle: Text(comment.body),
-                    ),
-                  );
-                }),
-                firstPageProgressIndicatorBuilder: (context) => Container(),
-                noItemsFoundIndicatorBuilder: (context) =>
-                    PlatformText(S.of(context).no_comments_yet),
-                newPageProgressIndicatorBuilder: (context) =>
-                    Center(child: PlatformCircularProgressIndicator()),
-                firstPageErrorIndicatorBuilder: (context) => Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(S.of(context).something_went_wrong_try_again),
-                      const SizedBox(height: 40),
-                      PlatformElevatedButton(
-                        child: PlatformText(S.of(context).try_again),
-                        onPressed: () =>
-                            _pagingController.retryLastFailedRequest(),
-                      ),
-                    ],
+        child: SmartRefresher(
+          controller: _refreshController,
+          onRefresh: () {
+            _commentsBloc.add(CommentsRefresh());
+            _pagingController.refresh();
+          },
+          child: PagedListView<int, Comment>.separated(
+            pagingController: _pagingController,
+            builderDelegate: PagedChildBuilderDelegate<Comment>(
+              itemBuilder: ((context, comment, index) {
+                return InkWell(
+                  onTap: () => _showCommentPlatformDialog(comment),
+                  child: ListTile(
+                    leading: Text(comment.id.toString()),
+                    title: Text('${comment.email}\n${comment.name}'),
+                    subtitle: Text(comment.body),
                   ),
+                );
+              }),
+              firstPageProgressIndicatorBuilder: (context) => Container(),
+              noItemsFoundIndicatorBuilder: (context) =>
+                  PlatformText(S.of(context).no_comments_yet),
+              newPageProgressIndicatorBuilder: (context) =>
+                  Center(child: PlatformCircularProgressIndicator()),
+              firstPageErrorIndicatorBuilder: (context) => Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(S.of(context).something_went_wrong_try_again),
+                    const SizedBox(height: 40),
+                    PlatformElevatedButton(
+                      child: PlatformText(S.of(context).try_again),
+                      onPressed: () =>
+                          _pagingController.retryLastFailedRequest(),
+                    ),
+                  ],
                 ),
               ),
-              separatorBuilder: (BuildContext context, int index) =>
-                  const Divider(height: 1.0),
             ),
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(height: 1.0),
           ),
         ),
       ),

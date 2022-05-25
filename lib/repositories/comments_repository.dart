@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:q_task_flutter_app/common/constants/constants.dart';
 import 'package:q_task_flutter_app/data/local/storage/comments_storage.dart';
 import 'package:q_task_flutter_app/data/model/domain/comment.dart';
 import 'package:q_task_flutter_app/data/network/service/comments_service.dart';
@@ -21,7 +22,11 @@ class CommentsRepository {
       page,
       limit,
     );
-    await _commentsStorage.saveComments(comments);
+    final List<Comment> currentPeristedComments =
+        await getPersistCommentsAsync() ?? [];
+    if (currentPeristedComments.length < Constants.dbCommentsLimit) {
+      await _commentsStorage.saveComments(comments);
+    }
     return comments;
   }
 

@@ -18,7 +18,7 @@ class ErrorHandler {
         case DioErrorType.receiveTimeout:
           return ReceiveTimeoutError(error.message);
         case DioErrorType.other:
-          return Exception(error.message);
+          return error.error;
         case DioErrorType.response:
           return errorResolver.resolve(
             error.response!,

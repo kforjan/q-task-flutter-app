@@ -10,7 +10,7 @@ abstract class CommentsState extends Equatable {
 }
 
 class CommentsInitial extends CommentsState {
-  const CommentsInitial({int pageNumber = 0}) : super(pageNumber: pageNumber);
+  const CommentsInitial() : super(pageNumber: 0);
 
   @override
   List<Object> get props => [pageNumber];
@@ -41,7 +41,6 @@ class CommentsError extends CommentsState {
     required this.error,
     required pageNumber,
   }) : super(pageNumber: pageNumber);
-
   final Exception error;
 
   @override
