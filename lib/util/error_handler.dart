@@ -59,6 +59,22 @@ class DefaultErrorResolver implements ErrorResolver {
   }
 }
 
+class GetCommentsErrorResolver implements ErrorResolver {
+  @override
+  Exception resolve<T>(response) {
+    final int? statusCode = response.statusCode;
+    final String statusMessage = response.statusMessage ?? '';
+    if (statusCode != null) {
+      if (statusCode >= 500 && statusCode <= 599) {
+        return ServerError(statusMessage);
+      } else if (statusCode == 404) {
+        return CommentsNotFound(statusMessage);
+      }
+    }
+    return Exception(response.statusMessage);
+  }
+}
+
 // errors
 class ServerError implements Exception {
   final String message;
@@ -103,4 +119,13 @@ class ReceiveTimeoutError implements Exception {
 
   @override
   String toString() => 'ReceiveTimeoutError: $message';
+}
+
+class CommentsNotFound implements Exception {
+  final String message;
+
+  const CommentsNotFound([this.message = '']);
+
+  @override
+  String toString() => 'CommentsNotFound: $message';
 }

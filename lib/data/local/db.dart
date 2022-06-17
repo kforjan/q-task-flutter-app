@@ -10,5 +10,5 @@ part 'db.g.dart';
 
 @Database(version: Constants.dbVersion, entities: [Comment])
 abstract class Db extends FloorDatabase {
-  CommentDao get commentsDao;
+  CommentsDao get commentsDao;
 }

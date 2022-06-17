@@ -14,14 +14,16 @@ class CommentsService extends BaseService {
 
   CommentsService(this._restClient);
 
-  Future<List<Comment>> getComments(int page, int limit) async {
+  Future<List<Comment>> getComments({
+    required int page,
+    required int limit,
+  }) async {
     return await apiRequest(
       apiCall: _restClient.getComments(
         page: page,
         limit: limit,
       ),
-
-      errorResolver: DefaultErrorResolver(), //TODO: error resolver
+      errorResolver: GetCommentsErrorResolver(),
     );
   }
 }

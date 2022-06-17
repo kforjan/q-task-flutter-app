@@ -3,17 +3,13 @@ import 'package:q_task_flutter_app/data/local/db.dart';
 import 'package:q_task_flutter_app/data/model/domain/comment.dart';
 
 @singleton
-class CommentStorage {
+class CommentsStorage {
   final Db _db;
 
-  CommentStorage(this._db);
+  CommentsStorage(this._db);
 
   Future<void> saveComments(List<Comment> comments) async {
     await _db.commentsDao.insertMultiple(comments);
-  }
-
-  Stream<List<Comment>> getCommentsStream() {
-    return _db.commentsDao.getCommentsStream();
   }
 
   Future<void> deleteAllComments() async {
@@ -22,5 +18,9 @@ class CommentStorage {
 
   Future<List<Comment>> getCommentsAsync() async {
     return await _db.commentsDao.getCommentsAsync();
+  }
+
+  Stream<List<Comment>> getCommentsStream() {
+    return _db.commentsDao.getCommentsStream();
   }
 }

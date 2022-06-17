@@ -59,7 +59,7 @@ class _$Db extends Db {
     changeListener = listener ?? StreamController<String>.broadcast();
   }
 
-  CommentDao? _commentsDaoInstance;
+  CommentsDao? _commentsDaoInstance;
 
   Future<sqflite.Database> open(String path, List<Migration> migrations,
       [Callback? callback]) async {
@@ -89,13 +89,13 @@ class _$Db extends Db {
   }
 
   @override
-  CommentDao get commentsDao {
-    return _commentsDaoInstance ??= _$CommentDao(database, changeListener);
+  CommentsDao get commentsDao {
+    return _commentsDaoInstance ??= _$CommentsDao(database, changeListener);
   }
 }
 
-class _$CommentDao extends CommentDao {
-  _$CommentDao(this.database, this.changeListener)
+class _$CommentsDao extends CommentsDao {
+  _$CommentsDao(this.database, this.changeListener)
       : _queryAdapter = QueryAdapter(database, changeListener),
         _commentInsertionAdapter = InsertionAdapter(
             database,
@@ -180,8 +180,8 @@ class _$CommentDao extends CommentDao {
   }
 
   @override
-  Future<List<int>> insertMultiple(List<Comment> models) {
-    return _commentInsertionAdapter.insertListAndReturnIds(
+  Future<void> insertMultiple(List<Comment> models) async {
+    await _commentInsertionAdapter.insertList(
         models, OnConflictStrategy.replace);
   }
 

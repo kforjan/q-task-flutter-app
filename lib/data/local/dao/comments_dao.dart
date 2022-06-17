@@ -5,7 +5,7 @@ import 'package:q_task_flutter_app/data/model/domain/comment.dart';
 import '../../../common/base/base_dao.dart';
 
 @dao
-abstract class CommentDao extends BaseDao<Comment> {
+abstract class CommentsDao extends BaseDao<Comment> {
   @Query('SELECT * FROM ${Constants.tableComment}')
   Stream<List<Comment>> getCommentsStream();
 

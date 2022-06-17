@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:floor/floor.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'comment.g.dart';

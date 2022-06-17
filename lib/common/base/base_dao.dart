@@ -5,7 +5,7 @@ abstract class BaseDao<T> {
   Future<void> insert(T model);
 
   @Insert(onConflict: OnConflictStrategy.replace)
-  Future<List<int>> insertMultiple(List<T> models);
+  Future<void> insertMultiple(List<T> models);
 
   @Update(onConflict: OnConflictStrategy.replace)
   Future<void> update(T model);

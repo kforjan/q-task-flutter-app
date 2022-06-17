@@ -57,6 +57,8 @@ dev_dependencies:
   freezed_annotation: ^1.1.0
   dio_logger: ^4.0.8+8
   logger: any
+  mocktail: ^0.3.0
+  bloc_test: ^9.0.3
 
 
 

@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:q_task_flutter_app/common/constants/constants.dart';
 import 'package:q_task_flutter_app/data/model/domain/comment.dart';
-import 'package:q_task_flutter_app/repositories/comments_repository.dart';
+import 'package:q_task_flutter_app/data/repositories/comments_repository.dart';
 import 'dart:async';
 
 part 'comments_event.dart';

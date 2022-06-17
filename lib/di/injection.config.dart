@@ -11,10 +11,10 @@ import 'package:injectable/injectable.dart' as _i2;
 import '../blocs/comments_bloc/comments_bloc.dart' as _i10;
 import '../config/flavor_config.dart' as _i5;
 import '../data/local/db.dart' as _i3;
-import '../data/local/storage/comments_storage.dart' as _i7;
+import '../data/local/storage/comments_storage.dart' as _i8;
 import '../data/network/rest_client.dart' as _i6;
-import '../data/network/service/comments_service.dart' as _i8;
-import '../repositories/comments_repository.dart' as _i9;
+import '../data/network/service/comments_service.dart' as _i7;
+import '../data/repositories/comments_repository.dart' as _i9;
 import 'register_module.dart' as _i11;
 
 const String _development = 'development';
@@ -35,10 +35,10 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.singleton<_i5.FlavorConfig>(_i5.ProdConfig(), registerFor: {_production});
   gh.singleton<_i6.RestClient>(
       _i6.RestClient.create(get<_i4.Dio>(), get<_i5.FlavorConfig>()));
-  gh.singleton<_i7.CommentStorage>(_i7.CommentStorage(get<_i3.Db>()));
-  gh.singleton<_i8.CommentsService>(_i8.CommentsService(get<_i6.RestClient>()));
+  gh.singleton<_i7.CommentsService>(_i7.CommentsService(get<_i6.RestClient>()));
+  gh.singleton<_i8.CommentsStorage>(_i8.CommentsStorage(get<_i3.Db>()));
   gh.singleton<_i9.CommentsRepository>(_i9.CommentsRepository(
-      get<_i8.CommentsService>(), get<_i7.CommentStorage>()));
+      get<_i7.CommentsService>(), get<_i8.CommentsStorage>()));
   gh.lazySingleton<_i10.CommentsBloc>(
       () => _i10.CommentsBloc(get<_i9.CommentsRepository>()));
   return get;
